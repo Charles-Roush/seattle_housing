@@ -255,7 +255,7 @@ def plot_lobf(x_vals, y_vals, quadratic=False):
     plt.plot(xs, ys, '--')
     plt.show()
 
-def plot_lobf_with_std(x_vals, y_vals, quadratic=False, n_std=2):
+def plot_lobf_with_std(x_vals, y_vals, title = '', x_title = '', y_title = '', quadratic=False, n_std=2):
     import stats_lib as sl
     import numpy as np
     import matplotlib.pyplot as plt
@@ -274,6 +274,7 @@ def plot_lobf_with_std(x_vals, y_vals, quadratic=False, n_std=2):
         xs = np.linspace(min(x_vals), max(x_vals), 300)
         ys_fit = a*xs + b
 
+
     residuals = y_vals - y_fit
     std = np.std(residuals)
 
@@ -284,6 +285,9 @@ def plot_lobf_with_std(x_vals, y_vals, quadratic=False, n_std=2):
     plt.plot(xs, ys_fit, '--', label='Best fit')
     plt.plot(xs, ys_upper, ':', color='gray', label=f'+{n_std} std')
     plt.plot(xs, ys_lower, ':', color='gray', label=f'-{n_std} std')
+    plt.title(title)
+    plt.xlabel(x_title)
+    plt.ylabel(y_title)
     plt.legend()
     plt.show()
 
