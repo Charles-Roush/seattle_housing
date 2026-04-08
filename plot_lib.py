@@ -280,15 +280,17 @@ def plot_lobf_with_std(x_vals, y_vals, title = '', x_title = '', y_title = '', q
 
     ys_upper = ys_fit + n_std*std
     ys_lower = ys_fit - n_std*std
-
+    plt.figure()
     plt.scatter(x_vals, y_vals)
     plt.plot(xs, ys_fit, '--', label='Best fit')
     plt.plot(xs, ys_upper, ':', color='gray', label=f'+{n_std} std')
     plt.plot(xs, ys_lower, ':', color='gray', label=f'-{n_std} std')
     plt.title(title)
+    plt.tight_layout()
     plt.xlabel(x_title)
     plt.ylabel(y_title)
     plt.legend()
+    plt.savefig(f'plots/{safe_filename(title)}')
     plt.show()
 
 def plot_centroid_groups(df, x_column_name, y_column_name):
